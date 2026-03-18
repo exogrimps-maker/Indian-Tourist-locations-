@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>India Tourist Map</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      background: #ff9933;
+      color: white;
+      padding: 15px;
+      margin: 0;
+    }
+
+    #map {
+      height: 90vh;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<h1>🇮🇳 Best Tourist Places in India</h1>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+  var map = L.map('map').setView([22.9734, 78.6569], 5);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+  }).addTo(map);
+
+  var places = [
+    ["Taj Mahal, Agra", 27.1751, 78.0421],
+    ["Jaipur, Rajasthan", 26.9124, 75.7873],
+    ["Goa Beaches", 15.2993, 74.1240],
+    ["Kerala Backwaters", 9.4981, 76.3388],
+    ["Manali, Himachal Pradesh", 32.2396, 77.1887],
+    ["Leh-Ladakh", 34.1526, 77.5770],
+    ["Varanasi, Uttar Pradesh", 25.3176, 82.9739],
+    ["Rishikesh, Uttarakhand", 30.0869, 78.2676],
+    ["Mysore Palace, Karnataka", 12.3051, 76.6551],
+    ["Darjeeling, West Bengal", 27.0360, 88.2627],
+    ["Hampi, Karnataka", 15.3350, 76.4600],
+    ["Andaman Islands", 11.7401, 92.6586]
+  ];
+
+  places.forEach(function(place) {
+    L.marker([place[1], place[2]])
+      .addTo(map)
+      .bindPopup("<b>" + place[0] + "</b>");
+  });
+
+</script>
+
+</body>
+</html>
